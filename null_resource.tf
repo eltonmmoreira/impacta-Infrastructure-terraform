@@ -35,25 +35,3 @@ resource "null_resource" "install-database" {
     script = "./bootstrap.sh"
   }
 }
-
-//resource "null_resource" "deploy_db" {
-//  triggers = {
-//    order = null_resource.upload_db.id
-//  }
-//  provisioner "remote-exec" {
-//    connection {
-//      type = "ssh"
-//      host = azurerm_public_ip.dataPublicIp.ip_address
-//      user = var.credentials.username
-//      password = var.credentials.passwd
-//    }
-//    inline = [
-//      "sudo apt-get update",
-//      "sudo apt-get install -y mysql-server-5.7",
-//      "sudo cp -f /home/azureuser/config/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf",
-//      "sudo mysql < /home/azureuser/config/script.sql",
-//      "sudo service mysql restart",
-//      "sleep 20",
-//    ]
-//  }
-//}
